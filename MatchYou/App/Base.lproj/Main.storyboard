@@ -54,6 +54,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="googleLoginButton" destination="btk-gh-Gzh" id="jGw-d7-a6t"/>
                         <outlet property="logo" destination="bAi-gB-HrD" id="IUs-Tf-8me"/>
                     </connections>
                 </viewController>
