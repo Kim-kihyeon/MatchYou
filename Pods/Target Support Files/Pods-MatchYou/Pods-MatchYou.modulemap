@@ -1,0 +1,6 @@
+framework module Pods_MatchYou {
+  umbrella header "Pods-MatchYou-umbrella.h"
+
+  export *
+  module * { export * }
+}
