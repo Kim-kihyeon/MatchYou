@@ -9,21 +9,27 @@ import Foundation
 
 public protocol PostUseCaseProtocol {
     func fetchPosts() async -> Result<[Post], NetworkError>
-    func savePost(post: Post) -> Result<Void, NetworkError>
-    func deletePost(id: String) -> Result<Void, NetworkError>
+    func savePost(post: Post) async -> Result<Void, NetworkError>
+    func deletePost(postId: String) async -> Result<Void, NetworkError>
 }
 
 public struct PostUseCase: PostUseCaseProtocol {
+    private let repository: PostRepositoryProtocol
+    
+    init(repository: PostRepositoryProtocol) {
+        self.repository = repository
+    }
+    
     public func fetchPosts() async -> Result<[Post], NetworkError> {
-        <#code#>
+        await repository.fetchPosts()
     }
     
-    public func savePost(post: Post) -> Result<Void, NetworkError> {
-        <#code#>
+    public func savePost(post: Post) async -> Result<Void, NetworkError> {
+        await repository.savePost(post: post)
     }
     
-    public func deletePost(id: String) -> Result<Void, NetworkError> {
-        <#code#>
+    public func deletePost(postId: String) async -> Result<Void, NetworkError> {
+        await repository.deletePost(postId: postId)
     }
     
 

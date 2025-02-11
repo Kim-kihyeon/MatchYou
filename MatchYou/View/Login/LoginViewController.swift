@@ -14,13 +14,13 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var googleLoginButton: GoogleLoginButton!
     @IBOutlet weak var logo: UILabel!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         logo.font = UIFont(name: "OTSBAggroB", size: 60)
-
+        
         googleLoginButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(googleLoginButtonTap)))
     }
 

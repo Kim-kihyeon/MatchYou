@@ -8,6 +8,6 @@ target 'MatchYou' do
   use_frameworks!
 
   # Pods for MatchYou
-  pod 'GoogleSignIn'
+  pod 
 
 end
