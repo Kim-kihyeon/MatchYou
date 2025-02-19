@@ -7,27 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		491E7A182D65C680008AA0C0 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 491E7A172D65C680008AA0C0 /* RxCocoa */; };
+		491E7A1A2D65C680008AA0C0 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 491E7A192D65C680008AA0C0 /* RxSwift */; };
+		491E7A1D2D65C69B008AA0C0 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 491E7A1C2D65C69B008AA0C0 /* SnapKit */; };
+		4943DA012D65BBFF00ECEDDC /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4943DA002D65BBFF00ECEDDC /* XCTest.framework */; };
 		49A3B06F2D5495AD00206AE0 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 49A3B06E2D5495AD00206AE0 /* FirebaseAuth */; };
 		49A3B0712D5495AD00206AE0 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 49A3B0702D5495AD00206AE0 /* FirebaseFirestore */; };
 		49A3B0732D5495AD00206AE0 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 49A3B0722D5495AD00206AE0 /* FirebaseStorage */; };
-		49C4427D2D5B31B300DC1DD9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 49C4427C2D5B31B300DC1DD9 /* SnapKit */; };
-		49C4427F2D5B31B300DC1DD9 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 49C4427E2D5B31B300DC1DD9 /* SnapKit-Dynamic */; };
-		49C442822D5B31FD00DC1DD9 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = 49C442812D5B31FD00DC1DD9 /* RxBlocking */; };
-		49C442842D5B31FD00DC1DD9 /* RxBlocking-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 49C442832D5B31FD00DC1DD9 /* RxBlocking-Dynamic */; };
-		49C442862D5B31FD00DC1DD9 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 49C442852D5B31FD00DC1DD9 /* RxCocoa */; };
-		49C442882D5B31FD00DC1DD9 /* RxCocoa-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 49C442872D5B31FD00DC1DD9 /* RxCocoa-Dynamic */; };
-		49C4428A2D5B31FD00DC1DD9 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 49C442892D5B31FD00DC1DD9 /* RxRelay */; };
-		49C4428C2D5B31FD00DC1DD9 /* RxRelay-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 49C4428B2D5B31FD00DC1DD9 /* RxRelay-Dynamic */; };
-		49C4428E2D5B31FD00DC1DD9 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 49C4428D2D5B31FD00DC1DD9 /* RxSwift */; };
-		49C442902D5B31FD00DC1DD9 /* RxSwift-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 49C4428F2D5B31FD00DC1DD9 /* RxSwift-Dynamic */; };
-		49C442922D5B31FD00DC1DD9 /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = 49C442912D5B31FD00DC1DD9 /* RxTest */; };
-		49C442942D5B31FD00DC1DD9 /* RxTest-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 49C442932D5B31FD00DC1DD9 /* RxTest-Dynamic */; };
 		49C442972D5B321500DC1DD9 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 49C442962D5B321500DC1DD9 /* Kingfisher */; };
 		68EE0C94D3D10A2DAE4AB1C1 /* Pods_MatchYou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B904D8D21370205A800CCA /* Pods_MatchYou.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		126FBBCB89DBE5B2DDD76035 /* Pods-MatchYou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MatchYou.debug.xcconfig"; path = "Target Support Files/Pods-MatchYou/Pods-MatchYou.debug.xcconfig"; sourceTree = "<group>"; };
+		4943DA002D65BBFF00ECEDDC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		49D45FAD2D53A56B000F74A6 /* MatchYou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MatchYou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67B904D8D21370205A800CCA /* Pods_MatchYou.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MatchYou.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C707322A8C4D936425D86760 /* Pods-MatchYou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MatchYou.release.xcconfig"; path = "Target Support Files/Pods-MatchYou/Pods-MatchYou.release.xcconfig"; sourceTree = "<group>"; };
@@ -59,23 +52,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49C442902D5B31FD00DC1DD9 /* RxSwift-Dynamic in Frameworks */,
-				49C442862D5B31FD00DC1DD9 /* RxCocoa in Frameworks */,
+				4943DA012D65BBFF00ECEDDC /* XCTest.framework in Frameworks */,
 				68EE0C94D3D10A2DAE4AB1C1 /* Pods_MatchYou.framework in Frameworks */,
 				49A3B0732D5495AD00206AE0 /* FirebaseStorage in Frameworks */,
+				491E7A182D65C680008AA0C0 /* RxCocoa in Frameworks */,
 				49A3B06F2D5495AD00206AE0 /* FirebaseAuth in Frameworks */,
 				49A3B0712D5495AD00206AE0 /* FirebaseFirestore in Frameworks */,
-				49C4427D2D5B31B300DC1DD9 /* SnapKit in Frameworks */,
-				49C4428E2D5B31FD00DC1DD9 /* RxSwift in Frameworks */,
-				49C442882D5B31FD00DC1DD9 /* RxCocoa-Dynamic in Frameworks */,
-				49C4427F2D5B31B300DC1DD9 /* SnapKit-Dynamic in Frameworks */,
-				49C442942D5B31FD00DC1DD9 /* RxTest-Dynamic in Frameworks */,
-				49C442922D5B31FD00DC1DD9 /* RxTest in Frameworks */,
-				49C4428C2D5B31FD00DC1DD9 /* RxRelay-Dynamic in Frameworks */,
-				49C442822D5B31FD00DC1DD9 /* RxBlocking in Frameworks */,
+				491E7A1D2D65C69B008AA0C0 /* SnapKit in Frameworks */,
+				491E7A1A2D65C680008AA0C0 /* RxSwift in Frameworks */,
 				49C442972D5B321500DC1DD9 /* Kingfisher in Frameworks */,
-				49C442842D5B31FD00DC1DD9 /* RxBlocking-Dynamic in Frameworks */,
-				49C4428A2D5B31FD00DC1DD9 /* RxRelay in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +88,7 @@
 		85AC66AD596EF087CD15182E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4943DA002D65BBFF00ECEDDC /* XCTest.framework */,
 				67B904D8D21370205A800CCA /* Pods_MatchYou.framework */,
 			);
 			name = Frameworks;
@@ -142,19 +128,10 @@
 				49A3B06E2D5495AD00206AE0 /* FirebaseAuth */,
 				49A3B0702D5495AD00206AE0 /* FirebaseFirestore */,
 				49A3B0722D5495AD00206AE0 /* FirebaseStorage */,
-				49C4427C2D5B31B300DC1DD9 /* SnapKit */,
-				49C4427E2D5B31B300DC1DD9 /* SnapKit-Dynamic */,
-				49C442812D5B31FD00DC1DD9 /* RxBlocking */,
-				49C442832D5B31FD00DC1DD9 /* RxBlocking-Dynamic */,
-				49C442852D5B31FD00DC1DD9 /* RxCocoa */,
-				49C442872D5B31FD00DC1DD9 /* RxCocoa-Dynamic */,
-				49C442892D5B31FD00DC1DD9 /* RxRelay */,
-				49C4428B2D5B31FD00DC1DD9 /* RxRelay-Dynamic */,
-				49C4428D2D5B31FD00DC1DD9 /* RxSwift */,
-				49C4428F2D5B31FD00DC1DD9 /* RxSwift-Dynamic */,
-				49C442912D5B31FD00DC1DD9 /* RxTest */,
-				49C442932D5B31FD00DC1DD9 /* RxTest-Dynamic */,
 				49C442962D5B321500DC1DD9 /* Kingfisher */,
+				491E7A172D65C680008AA0C0 /* RxCocoa */,
+				491E7A192D65C680008AA0C0 /* RxSwift */,
+				491E7A1C2D65C69B008AA0C0 /* SnapKit */,
 			);
 			productName = MatchYou;
 			productReference = 49D45FAD2D53A56B000F74A6 /* MatchYou.app */;
@@ -187,9 +164,9 @@
 			packageReferences = (
 				49A3B01A2D548CCE00206AE0 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				49A3B06D2D5495AD00206AE0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				49C4427B2D5B31B300DC1DD9 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				49C442802D5B31FD00DC1DD9 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				49C442952D5B321500DC1DD9 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				491E7A162D65C680008AA0C0 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				491E7A1B2D65C69B008AA0C0 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 49D45FAE2D53A56B000F74A6 /* Products */;
@@ -289,7 +266,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kihyeon.MatchYou;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = MatchYou;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -321,7 +298,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kihyeon.MatchYou;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = MatchYou;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -471,6 +448,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		491E7A162D65C680008AA0C0 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.9.0;
+			};
+		};
+		491E7A1B2D65C69B008AA0C0 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
 		49A3B01A2D548CCE00206AE0 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/google/GoogleSignIn-iOS.git";
@@ -487,22 +480,6 @@
 				minimumVersion = 11.8.1;
 			};
 		};
-		49C4427B2D5B31B300DC1DD9 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.7.1;
-			};
-		};
-		49C442802D5B31FD00DC1DD9 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ReactiveX/RxSwift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.8.0;
-			};
-		};
 		49C442952D5B321500DC1DD9 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher";
@@ -514,6 +491,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		491E7A172D65C680008AA0C0 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 491E7A162D65C680008AA0C0 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		491E7A192D65C680008AA0C0 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 491E7A162D65C680008AA0C0 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		491E7A1C2D65C69B008AA0C0 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 491E7A1B2D65C69B008AA0C0 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
 		49A3B06E2D5495AD00206AE0 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 49A3B06D2D5495AD00206AE0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -528,66 +520,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 49A3B06D2D5495AD00206AE0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
-		};
-		49C4427C2D5B31B300DC1DD9 /* SnapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 49C4427B2D5B31B300DC1DD9 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
-		};
-		49C4427E2D5B31B300DC1DD9 /* SnapKit-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 49C4427B2D5B31B300DC1DD9 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = "SnapKit-Dynamic";
-		};
-		49C442812D5B31FD00DC1DD9 /* RxBlocking */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 49C442802D5B31FD00DC1DD9 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxBlocking;
-		};
-		49C442832D5B31FD00DC1DD9 /* RxBlocking-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 49C442802D5B31FD00DC1DD9 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = "RxBlocking-Dynamic";
-		};
-		49C442852D5B31FD00DC1DD9 /* RxCocoa */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 49C442802D5B31FD00DC1DD9 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxCocoa;
-		};
-		49C442872D5B31FD00DC1DD9 /* RxCocoa-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 49C442802D5B31FD00DC1DD9 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = "RxCocoa-Dynamic";
-		};
-		49C442892D5B31FD00DC1DD9 /* RxRelay */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 49C442802D5B31FD00DC1DD9 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxRelay;
-		};
-		49C4428B2D5B31FD00DC1DD9 /* RxRelay-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 49C442802D5B31FD00DC1DD9 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = "RxRelay-Dynamic";
-		};
-		49C4428D2D5B31FD00DC1DD9 /* RxSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 49C442802D5B31FD00DC1DD9 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxSwift;
-		};
-		49C4428F2D5B31FD00DC1DD9 /* RxSwift-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 49C442802D5B31FD00DC1DD9 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = "RxSwift-Dynamic";
-		};
-		49C442912D5B31FD00DC1DD9 /* RxTest */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 49C442802D5B31FD00DC1DD9 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxTest;
-		};
-		49C442932D5B31FD00DC1DD9 /* RxTest-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 49C442802D5B31FD00DC1DD9 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = "RxTest-Dynamic";
 		};
 		49C442962D5B321500DC1DD9 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
