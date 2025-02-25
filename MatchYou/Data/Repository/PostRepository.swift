@@ -14,8 +14,8 @@ public struct PostRepository: PostRepositoryProtocol {
         self.network = network
     }
     
-    public func fetchPosts() async -> Result<[Post], NetworkError> {
-        await network.fetchPosts()
+    public func fetchPosts(userId: String) async -> Result<[Post], NetworkError> {
+        await network.fetchPosts(userId: userId)
     }
     
     public func savePost(post: Post) async -> Result<Void, NetworkError> {

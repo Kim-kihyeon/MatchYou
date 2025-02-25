@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol PostNetworkProtocol {
-    func fetchPosts() async -> Result<[Post], NetworkError>
+    func fetchPosts(userId: String) async -> Result<[Post], NetworkError>
     func savePost(post: Post) async -> Result<Void, NetworkError>
     func deletePost(postId: String) async -> Result<Void, NetworkError>
 }
@@ -21,8 +21,8 @@ final public class PostNetwork: PostNetworkProtocol {
         self.manager = manager
     }
     
-    public func fetchPosts() async -> Result<[Post], NetworkError> {
-        await manager.fetchData(table: tableName)
+    public func fetchPosts(userId: String) async -> Result<[Post], NetworkError> {
+        await manager.fetchData(table: tableName, id: userId)
     }
     
     public func savePost(post: Post) async -> Result<Void, NetworkError> {

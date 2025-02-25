@@ -9,19 +9,34 @@ import Foundation
 import FirebaseFirestore
 
 protocol NetworkManagerProtocol {
-    func fetchData<T: Decodable>(table: String) async -> Result<[T], NetworkError>
+    func fetchData<T: Decodable>(table: String, id: String) async -> Result<[T], NetworkError>
     func saveData<T: Encodable>(table: String, data: T) async -> Result<Void, NetworkError>
     func deleteData(table: String, dataId: String) async -> Result<Void, NetworkError>
 }
 
 public class NetworkManager: NetworkManagerProtocol {
-    func fetchData<T: Decodable>(table: String) async -> Result<[T], NetworkError> {
+    private let db = Firestore.firestore()
+    
+    private var lastDocuments: [String: DocumentSnapshot] = [:]
+    
+    func fetchData<T: Decodable>(table: String, id: String) async -> Result<[T], NetworkError> {
         do {
-            let documents = try await Firestore.firestore().collection(table).order(by: "date", descending: true).getDocuments().documents
+            var query = db.collection(table)
+                .order(by: "date", descending: true)
+                .limit(to: 10)
             
-            let datas = try documents.compactMap { document in
-                return try document.data(as: T.self)
+            if let lastDocument = lastDocuments[table] {
+                query = query.start(afterDocument: lastDocument)
             }
+            
+            let snapshot = try await query.getDocuments()
+            lastDocuments[table] = snapshot.documents.last
+            
+            let datas = try snapshot.documents
+                .filter { $0.documentID == id }
+                .compactMap { document in
+                    return try document.data(as: T.self)
+                }
             
             return .success(datas)
         } catch {
@@ -43,7 +58,7 @@ public class NetworkManager: NetworkManagerProtocol {
     
     func deleteData(table: String, dataId: String) async -> Result<Void, NetworkError> {
         do {
-            try await Firestore.firestore().collection(table).document(dataId).delete()
+            try await db.collection(table).document(dataId).delete()
             return .success(())
         } catch {
             return .failure(.requestFailed(error.localizedDescription))
