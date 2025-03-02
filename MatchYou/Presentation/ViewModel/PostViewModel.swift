@@ -36,7 +36,7 @@ public final class PostViewModel: PostViewModelProtocol {
         let error: Observable<String>
     }
     
-    public func tranform(input: Input) -> Output {
+    public func transform(input: Input) -> Output {
         input.userId.bind { [weak self] userId in
             self?.fetchPost(userId: userId)
         }.disposed(by: disposeBag)

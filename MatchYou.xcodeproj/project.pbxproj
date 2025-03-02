@@ -10,7 +10,6 @@
 		491E7A182D65C680008AA0C0 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 491E7A172D65C680008AA0C0 /* RxCocoa */; };
 		491E7A1A2D65C680008AA0C0 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 491E7A192D65C680008AA0C0 /* RxSwift */; };
 		491E7A1D2D65C69B008AA0C0 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 491E7A1C2D65C69B008AA0C0 /* SnapKit */; };
-		4943DA012D65BBFF00ECEDDC /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4943DA002D65BBFF00ECEDDC /* XCTest.framework */; };
 		49A3B06F2D5495AD00206AE0 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 49A3B06E2D5495AD00206AE0 /* FirebaseAuth */; };
 		49A3B0712D5495AD00206AE0 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 49A3B0702D5495AD00206AE0 /* FirebaseFirestore */; };
 		49A3B0732D5495AD00206AE0 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 49A3B0722D5495AD00206AE0 /* FirebaseStorage */; };
@@ -31,6 +30,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
+				MatchYouTests/PostUsecaseTests.swift,
 			);
 			target = 49D45FAC2D53A56B000F74A6 /* MatchYou */;
 		};
@@ -52,7 +52,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4943DA012D65BBFF00ECEDDC /* XCTest.framework in Frameworks */,
 				68EE0C94D3D10A2DAE4AB1C1 /* Pods_MatchYou.framework in Frameworks */,
 				49A3B0732D5495AD00206AE0 /* FirebaseStorage in Frameworks */,
 				491E7A182D65C680008AA0C0 /* RxCocoa in Frameworks */,
@@ -247,6 +246,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MatchYou/MatchYou.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 697ACQDW6C;
@@ -255,7 +255,7 @@
 				INFOPLIST_FILE = MatchYou/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
@@ -279,6 +279,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MatchYou/MatchYou.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 697ACQDW6C;
@@ -287,7 +288,7 @@
 				INFOPLIST_FILE = MatchYou/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
