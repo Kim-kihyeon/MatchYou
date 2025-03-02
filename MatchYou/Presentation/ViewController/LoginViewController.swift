@@ -45,6 +45,7 @@ class LoginViewController: UIViewController {
         return stackView
     }()
     
+    //MARK: - Initialize
     init(viewModel: LoginViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -101,8 +102,12 @@ class LoginViewController: UIViewController {
         let input = LoginViewModel.Input(oAuthProviderType: loginButtonTapped.asObservable())
         let output = viewModel.transform(input: input)
         
-        output.user.bind { user in
-            print("로그인 성공: \(user)")
+        output.user
+            .compactMap { $0 }
+            .observe(on: MainScheduler.instance)
+            .bind { [weak self] user in
+                let mainViewController = MainViewController(user: user)
+                self?.navigationController?.pushViewController(mainViewController, animated: true)
         }
         .disposed(by: disposeBag)
         
