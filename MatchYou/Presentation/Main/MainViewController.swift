@@ -10,8 +10,10 @@ import SnapKit
 import FirebaseAuth
 
 class MainViewController: UIViewController {
+    //MARK: - Data
     private let user: User
     
+    //MARK: - Child ViewController
     private let homeViewController = UINavigationController(rootViewController: HomeViewController())
     private let chattingViewController = ChattingViewController()
     private let createEstimateViewController = CreateEstimateViewController()
@@ -19,9 +21,11 @@ class MainViewController: UIViewController {
     
     private var viewControllers: [UIViewController] = []
     
+    //MARK: - View
     private let contentView = UIView()
     private let tabBarView = CustomTabBar()
     
+    //MARK: - Initialize
     init(user: User) {
         self.user = user
         super.init(nibName: nil, bundle: nil)
@@ -44,7 +48,7 @@ class MainViewController: UIViewController {
     }
     
     private func setViewControllers() {
-        viewControllers = [homeViewController, chattingViewController, createEstimateViewController, myInfoViewController]
+        viewControllers = [homeViewController, chattingViewController, UIViewController(), myInfoViewController]
         
         for viewController in viewControllers {
             addChild(viewController)
@@ -80,8 +84,14 @@ class MainViewController: UIViewController {
     }
     
     private func switchToTab(index: Int) {
-        for (i, viewController) in viewControllers.enumerated() {
-            viewController.view.isHidden = i != index
+        if index != 2 {
+            for (i, viewController) in viewControllers.enumerated() {
+                viewController.view.isHidden = i != index
+            }
+        } else {
+            createEstimateViewController.modalPresentationStyle = .fullScreen
+            createEstimateViewController.modalTransitionStyle = .coverVertical
+            present(createEstimateViewController, animated: true)
         }
     }
 }
@@ -95,7 +105,7 @@ final class CustomTabBar: UIView {
     private let tabImages: [String] = [
         "house.fill",
         "message.fill",
-        "doc.fill",
+        "text.badge.plus",
         "person.fill"
     ]
     
@@ -114,7 +124,7 @@ final class CustomTabBar: UIView {
     }
     
     private func setBackgroundView() {
-        backgroundColor = .matchYouBackground
+        backgroundColor = .matchYouDeep
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.1
         layer.shadowOffset = CGSize(width: 0, height: -2)
@@ -134,7 +144,6 @@ final class CustomTabBar: UIView {
             let button = UIButton()
             button.setImage(UIImage(systemName: image), for: .normal)
             button.tintColor = .gray
-            button.setTitleColor(.gray, for: .normal)
             button.tag = index
             button.addTarget(self, action: #selector(tabButtonTapped(_:)), for: .touchUpInside)
             button.contentVerticalAlignment = .top
@@ -156,10 +165,11 @@ final class CustomTabBar: UIView {
     }
     
     private func updateSelectedTab(index: Int) {
-        for (idx, button) in buttons.enumerated() {
-            let isSelected = idx == index
-            button.tintColor = isSelected ? .white : .gray
-            button.setTitleColor(isSelected ? .white : .gray, for: .normal)
+        if index != 2 {
+            for (idx, button) in buttons.enumerated() {
+                let isSelected = idx == index
+                button.tintColor = isSelected ? .white : .gray
+            }
         }
     }
 }

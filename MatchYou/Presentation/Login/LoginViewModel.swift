@@ -19,7 +19,6 @@ public final class LoginViewModel: LoginViewModelProtocol {
     private let disposeBag = DisposeBag()
     private let error = PublishRelay<String>()
     private let user = BehaviorRelay<User?>(value: nil)
-    fileprivate var currentNonce: String?
     
     public init(usecase: LoginUseCase) {
         self.usecase = usecase
