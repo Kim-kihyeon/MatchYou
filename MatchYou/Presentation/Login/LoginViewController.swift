@@ -49,12 +49,7 @@ class LoginViewController: UIViewController {
     init(viewModel: LoginViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        view.backgroundColor = UIColor(
-            red: 228.0 / 255.0,
-            green: 201.0 / 255.0,
-            blue: 160.0 / 255.0,
-            alpha: 1.0
-        )
+        view.backgroundColor = .matchYouBackground
         setUI()
         bindView()
     }
@@ -87,11 +82,13 @@ class LoginViewController: UIViewController {
     private func bindView() {
         googleSignInButton.rx.tap
             .map { OAuthProviderType.google }
+            .observe(on: MainScheduler.instance)
             .bind(to: loginButtonTapped)
             .disposed(by: disposeBag)
         
         appleSignInButton.rx.tap
             .map { OAuthProviderType.apple }
+            .observe(on: MainScheduler.instance)
             .bind(to: loginButtonTapped)
             .disposed(by: disposeBag)
         
@@ -107,7 +104,7 @@ class LoginViewController: UIViewController {
             .observe(on: MainScheduler.instance)
             .bind { [weak self] user in
                 let mainViewController = MainViewController(user: user)
-                self?.navigationController?.pushViewController(mainViewController, animated: true)
+                self?.navigationController?.setViewControllers([mainViewController], animated: true)
         }
         .disposed(by: disposeBag)
         
