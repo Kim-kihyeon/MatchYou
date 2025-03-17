@@ -8,7 +8,7 @@
 import Foundation
 
 public class MockPostRepository: PostRepositoryProtocol {
-    public func fetchPosts(userId: String) async -> Result<[Post], NetworkError> {
+    public func fetchPosts(userId: String, page: Int, pageSize: Int) async -> Result<[Post], NetworkError> {
         .failure(.dataNil)
     }
     

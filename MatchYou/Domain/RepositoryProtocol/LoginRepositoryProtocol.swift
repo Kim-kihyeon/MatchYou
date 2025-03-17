@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import FirebaseAuth
+import Supabase
 
 public protocol LoginRepositoryProtocol {
     func signInWithGoogle() async -> Result<User, NetworkError>

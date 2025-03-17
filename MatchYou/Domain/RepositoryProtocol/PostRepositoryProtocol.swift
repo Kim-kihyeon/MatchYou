@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol PostRepositoryProtocol {
-    func fetchPosts(userId: String) async -> Result<[Post], NetworkError>
+    func fetchPosts(userId: String, page: Int, pageSize: Int) async -> Result<[Post], NetworkError>
     func savePost(post: Post) async -> Result<Void, NetworkError>
     func deletePost(postId: String) async -> Result<Void, NetworkError>
 }

@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol PostUseCaseProtocol {
-    func fetchPosts(userId: String) async -> Result<[Post], NetworkError>
+    func fetchPosts(userId: String, page: Int, pageSize: Int) async -> Result<[Post], NetworkError>
     func savePost(post: Post) async -> Result<Void, NetworkError>
     func deletePost(postId: String) async -> Result<Void, NetworkError>
 }
@@ -20,8 +20,8 @@ public struct PostUseCase: PostUseCaseProtocol {
         self.repository = repository
     }
     
-    public func fetchPosts(userId: String) async -> Result<[Post], NetworkError> {
-        await repository.fetchPosts(userId: userId)
+    public func fetchPosts(userId: String, page: Int, pageSize: Int) async -> Result<[Post], NetworkError> {
+        await repository.fetchPosts(userId: userId, page: page, pageSize: pageSize)
     }
     
     public func savePost(post: Post) async -> Result<Void, NetworkError> {

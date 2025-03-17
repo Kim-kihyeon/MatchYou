@@ -8,6 +8,16 @@
 import UIKit
 
 extension UIImage {
+    convenience init(color: UIColor) {
+            let size = CGSize(width: 1, height: 1)
+            UIGraphicsBeginImageContext(size)
+            color.setFill()
+            UIRectFill(CGRect(origin: .zero, size: size))
+            let image = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            self.init(cgImage: image!.cgImage!)
+        }
+    
     func resizeImageTo(size: CGSize) -> UIImage? {
         let aspectRatio = self.size.width / self.size.height
         

@@ -7,7 +7,7 @@
 
 import UIKit
 import SnapKit
-import FirebaseAuth
+import Supabase
 
 class MainViewController: UIViewController {
     //MARK: - Data

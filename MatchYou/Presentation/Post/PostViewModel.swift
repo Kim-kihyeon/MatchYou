@@ -18,6 +18,7 @@ public final class PostViewModel: PostViewModelProtocol {
     private let disposeBag = DisposeBag()
     private let error = PublishRelay<String>()
     private let fetchPostList = BehaviorRelay<[Post]>(value: [])
+    private var page: Int = 0
     
     public init(usecase: PostUseCaseProtocol) {
         self.usecase = usecase
@@ -38,7 +39,9 @@ public final class PostViewModel: PostViewModelProtocol {
     
     public func transform(input: Input) -> Output {
         input.userId.bind { [weak self] userId in
-            self?.fetchPost(userId: userId)
+            guard let self else { return }
+            self.page = 0
+            self.fetchPost(userId: userId, page: self.page)
         }.disposed(by: disposeBag)
         
         input.savePost.bind { [weak self] post in
@@ -52,7 +55,9 @@ public final class PostViewModel: PostViewModelProtocol {
         input.fetchMore
             .withLatestFrom(input.userId)
             .bind { [weak self] userId in
-                self?.fetchPost(userId: userId)
+                guard let self else { return }
+                self.page += 1
+                self.fetchPost(userId: userId, page: page)
         }.disposed(by: disposeBag)
         
         let cellData: Observable<[PostCellData]> = Observable.combineLatest(input.tabButtonType, fetchPostList).map { [weak self] tabButtonType, fetchPostList in
@@ -71,9 +76,9 @@ public final class PostViewModel: PostViewModelProtocol {
         return Output(cellData: cellData, error: error.asObservable())
     }
     
-    private func fetchPost(userId: String) {
+    private func fetchPost(userId: String, page: Int) {
         Task {
-            let result = await usecase.fetchPosts(userId: userId)
+            let result = await usecase.fetchPosts(userId: userId, page: page, pageSize: 10)
             
             switch result {
             case .success(let posts):

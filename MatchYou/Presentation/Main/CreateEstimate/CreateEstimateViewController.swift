@@ -45,6 +45,8 @@ class CreateEstimateViewController: UIViewController {
         return optionBoxView
     }()
     
+    private let bottomButtonView: BottomButtonView = BottomButtonView()
+    
     //MARK: - Properties
     private var editTextRelay: BehaviorRelay<String> = BehaviorRelay(value: "")
     private var isTextFieldFocusedRelay: BehaviorRelay<Bool> = BehaviorRelay(value: false)
@@ -55,6 +57,7 @@ class CreateEstimateViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         view.backgroundColor = .matchYouBackground
         setUI()
+        setTabAction()
     }
     
     required init?(coder: NSCoder) {
@@ -70,13 +73,10 @@ class CreateEstimateViewController: UIViewController {
         view.addSubview(navigationBarView)
         view.addSubview(divider)
         view.addSubview(scrollView)
+        view.addSubview(bottomButtonView)
         
         scrollView.addSubview(contentStackView)
         contentStackView.addArrangedSubview(titleTextField)
-        
-        navigationBarView.setBackButtonAction { [weak self] in
-            self?.dismiss(animated: true)
-        }
         
         navigationBarView.setTitle("견적 작성")
         
@@ -94,12 +94,13 @@ class CreateEstimateViewController: UIViewController {
         }
         
         scrollView.snp.makeConstraints { make in
-            make.top.equalTo(divider.snp.bottom).inset(-12)
-            make.leading.trailing.bottom.equalToSuperview()
+            make.top.equalTo(divider.snp.bottom)
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(bottomButtonView)
         }
         
         contentStackView.snp.makeConstraints { make in
-            make.top.equalToSuperview()
+            make.top.equalToSuperview().inset(12)
             make.leading.trailing.equalToSuperview().inset(12)
             make.width.equalTo(scrollView.snp.width).offset(-24)
         }
@@ -108,6 +109,25 @@ class CreateEstimateViewController: UIViewController {
             make.height.equalTo(80)
         }
         
+        bottomButtonView.snp.makeConstraints { make in
+            make.leading.trailing.bottom.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-60)
+        }
+    }
+    
+    //MARK: - Action
+    private func setTabAction() {
+        navigationBarView.setBackButtonAction { [weak self] in
+            self?.dismiss(animated: true)
+        }
+        
+        navigationBarView.setTempSaveButtonAction { [weak self] in
+            
+        }
+        
+        bottomButtonView.onTap = { [weak self] in
+            print("bottomButtonView tapped")
+        }
     }
 }
 
@@ -168,6 +188,10 @@ final class NavigationBarView: UIView {
     // MARK: - Actions
     func setBackButtonAction(_ action: @escaping () -> Void) {
         backButton.addAction(UIAction { _ in action() }, for: .touchUpInside)
+    }
+    
+    func setTempSaveButtonAction(_ action: @escaping () -> Void) {
+        tempSaveButton.addAction(UIAction { _ in action() }, for: .touchUpInside)
     }
     
     func setTitle(_ title: String) {
@@ -235,3 +259,38 @@ final class OptionBoxView: UIView {
     }
 }
 
+final class BottomButtonView: UIView {
+    var onTap: (() -> Void)?
+    
+    private let button = UIButton(type: .system)
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setUI()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setUI() {
+        backgroundColor = .matchYouBackground
+        addSubview(button)
+        
+        button.snp.makeConstraints { make in
+            make.leading.top.trailing.equalToSuperview().inset(12)
+            make.height.equalTo(40)
+        }
+        button.setBackgroundColor(.matchYouSecondary, for: .normal)
+        button.setBackgroundColor(.matchYouSecondary.withAlphaComponent(0.5), for: .highlighted)
+        button.tintColor = .white
+        button.setTitle("작성 완료", for: .normal)
+        button.layer.cornerRadius = 8
+        button.clipsToBounds = true
+        button.addTarget(self, action: #selector(handleTap(_:)), for: .touchUpInside)
+    }
+    
+    @objc private func handleTap(_ sender: UIButton) {
+        onTap?()
+    }
+}

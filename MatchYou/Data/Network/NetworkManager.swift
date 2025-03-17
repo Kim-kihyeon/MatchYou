@@ -6,50 +6,45 @@
 //
 
 import Foundation
-import FirebaseFirestore
+import Supabase
 
 protocol NetworkManagerProtocol {
-    func fetchData<T: Decodable>(table: String, id: String) async -> Result<[T], NetworkError>
+    func fetchData<T: Decodable>(table: String, id: String, page: Int, pageSize: Int) async -> Result<[T], NetworkError>
     func saveData<T: Encodable>(table: String, data: T) async -> Result<Void, NetworkError>
     func deleteData(table: String, dataId: String) async -> Result<Void, NetworkError>
 }
 
 public class NetworkManager: NetworkManagerProtocol {
-    private let db = Firestore.firestore()
+    private let client = SupabaseService.shared.client
     
-    private var lastDocuments: [String: DocumentSnapshot] = [:]
-    
-    func fetchData<T: Decodable>(table: String, id: String) async -> Result<[T], NetworkError> {
+    func fetchData<T: Decodable>(table: String, id: String, page: Int, pageSize: Int) async -> Result<[T], NetworkError> {
         do {
-            var query = db.collection(table)
-                .order(by: "date", descending: true)
-                .limit(to: 10)
+            let from = page * pageSize
+            let to = from + pageSize - 1
             
-            if let lastDocument = lastDocuments[table] {
-                query = query.start(afterDocument: lastDocument)
-            }
+            let query = client
+                .from(table)
+                .select()
+                .eq("id", value: id)
+                .range(from: from, to: to)
             
-            let snapshot = try await query.getDocuments()
-            lastDocuments[table] = snapshot.documents.last
+            let response = try await query.execute()
             
-            let datas = try snapshot.documents
-                .filter { $0.documentID == id }
-                .compactMap { document in
-                    return try document.data(as: T.self)
-                }
+            let datas = try JSONDecoder().decode([T].self, from: response.data)
             
             return .success(datas)
+            
         } catch {
             return .failure(.requestFailed(error.localizedDescription))
         }
     }
     
     func saveData<T>(table: String, data: T) async -> Result<Void, NetworkError> where T : Encodable {
-        let reference = Firestore.firestore().collection(table).document()
-        
         do {
-            let encodedData = try Firestore.Encoder().encode(data)
-            try await reference.setData(encodedData)
+            let _ = try await client
+                .from(table)
+                .insert(data)
+                .execute()
             return .success(())
         } catch {
             return .failure(.requestFailed(error.localizedDescription))
@@ -58,7 +53,11 @@ public class NetworkManager: NetworkManagerProtocol {
     
     func deleteData(table: String, dataId: String) async -> Result<Void, NetworkError> {
         do {
-            try await db.collection(table).document(dataId).delete()
+            let _ = try await client
+                .from(table)
+                .delete()
+                .eq("id", value: dataId)
+                .execute()
             return .success(())
         } catch {
             return .failure(.requestFailed(error.localizedDescription))

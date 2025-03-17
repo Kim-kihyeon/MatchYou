@@ -8,7 +8,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
-import FirebaseAuth
+import Supabase
 
 protocol LoginViewModelProtocol {
     func transform(input: LoginViewModel.Input) -> LoginViewModel.Output

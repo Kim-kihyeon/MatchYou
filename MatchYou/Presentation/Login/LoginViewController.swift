@@ -9,8 +9,6 @@ import UIKit
 import SnapKit
 import RxSwift
 import GoogleSignIn
-import FirebaseCore
-import FirebaseAuth
 
 class LoginViewController: UIViewController {
     private let viewModel: LoginViewModelProtocol

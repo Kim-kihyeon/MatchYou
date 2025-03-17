@@ -7,8 +7,6 @@
 
 import UIKit
 import CoreData
-import FirebaseCore
-import FirebaseAuth
 import GoogleSignIn
 
 @main
@@ -18,7 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        FirebaseApp.configure()
+        let configuration = GIDConfiguration(clientID: "152874153295-320v2cr9hjsfl9vul2l860n9k79elbn1.apps.googleusercontent.com")
+        GIDSignIn.sharedInstance.configuration = configuration
         return true
     }
 
@@ -35,10 +34,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
-        return GIDSignIn.sharedInstance.handle(url)
-    }
+//
+//    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
+//        return GIDSignIn.sharedInstance.handle(url)
+//    }
 
     //MARK: - Core Data stack
     

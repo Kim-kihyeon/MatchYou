@@ -10,9 +10,15 @@
 		491E7A182D65C680008AA0C0 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 491E7A172D65C680008AA0C0 /* RxCocoa */; };
 		491E7A1A2D65C680008AA0C0 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 491E7A192D65C680008AA0C0 /* RxSwift */; };
 		491E7A1D2D65C69B008AA0C0 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 491E7A1C2D65C69B008AA0C0 /* SnapKit */; };
-		49A3B06F2D5495AD00206AE0 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 49A3B06E2D5495AD00206AE0 /* FirebaseAuth */; };
-		49A3B0712D5495AD00206AE0 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 49A3B0702D5495AD00206AE0 /* FirebaseFirestore */; };
-		49A3B0732D5495AD00206AE0 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 49A3B0722D5495AD00206AE0 /* FirebaseStorage */; };
+		4997BDFE2D81374F005EB86E /* Auth in Frameworks */ = {isa = PBXBuildFile; productRef = 4997BDFD2D81374F005EB86E /* Auth */; };
+		4997BE002D81374F005EB86E /* Functions in Frameworks */ = {isa = PBXBuildFile; productRef = 4997BDFF2D81374F005EB86E /* Functions */; };
+		4997BE022D81374F005EB86E /* PostgREST in Frameworks */ = {isa = PBXBuildFile; productRef = 4997BE012D81374F005EB86E /* PostgREST */; };
+		4997BE042D81374F005EB86E /* Realtime in Frameworks */ = {isa = PBXBuildFile; productRef = 4997BE032D81374F005EB86E /* Realtime */; };
+		4997BE062D81374F005EB86E /* Storage in Frameworks */ = {isa = PBXBuildFile; productRef = 4997BE052D81374F005EB86E /* Storage */; };
+		4997BE082D81374F005EB86E /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 4997BE072D81374F005EB86E /* Supabase */; };
+		4997BE0F2D813FE8005EB86E /* JWTKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4997BE0E2D813FE8005EB86E /* JWTKit */; };
+		4997BE262D82C041005EB86E /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 4997BE252D82C041005EB86E /* GoogleSignIn */; };
+		4997BE282D82C041005EB86E /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4997BE272D82C041005EB86E /* GoogleSignInSwift */; };
 		49C442972D5B321500DC1DD9 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 49C442962D5B321500DC1DD9 /* Kingfisher */; };
 		68EE0C94D3D10A2DAE4AB1C1 /* Pods_MatchYou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B904D8D21370205A800CCA /* Pods_MatchYou.framework */; };
 /* End PBXBuildFile section */
@@ -52,13 +58,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4997BE082D81374F005EB86E /* Supabase in Frameworks */,
+				4997BE042D81374F005EB86E /* Realtime in Frameworks */,
 				68EE0C94D3D10A2DAE4AB1C1 /* Pods_MatchYou.framework in Frameworks */,
-				49A3B0732D5495AD00206AE0 /* FirebaseStorage in Frameworks */,
+				4997BE262D82C041005EB86E /* GoogleSignIn in Frameworks */,
+				4997BE0F2D813FE8005EB86E /* JWTKit in Frameworks */,
 				491E7A182D65C680008AA0C0 /* RxCocoa in Frameworks */,
-				49A3B06F2D5495AD00206AE0 /* FirebaseAuth in Frameworks */,
-				49A3B0712D5495AD00206AE0 /* FirebaseFirestore in Frameworks */,
+				4997BDFE2D81374F005EB86E /* Auth in Frameworks */,
 				491E7A1D2D65C69B008AA0C0 /* SnapKit in Frameworks */,
+				4997BE022D81374F005EB86E /* PostgREST in Frameworks */,
+				4997BE282D82C041005EB86E /* GoogleSignInSwift in Frameworks */,
+				4997BE002D81374F005EB86E /* Functions in Frameworks */,
 				491E7A1A2D65C680008AA0C0 /* RxSwift in Frameworks */,
+				4997BE062D81374F005EB86E /* Storage in Frameworks */,
 				49C442972D5B321500DC1DD9 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -124,13 +136,19 @@
 			);
 			name = MatchYou;
 			packageProductDependencies = (
-				49A3B06E2D5495AD00206AE0 /* FirebaseAuth */,
-				49A3B0702D5495AD00206AE0 /* FirebaseFirestore */,
-				49A3B0722D5495AD00206AE0 /* FirebaseStorage */,
 				49C442962D5B321500DC1DD9 /* Kingfisher */,
 				491E7A172D65C680008AA0C0 /* RxCocoa */,
 				491E7A192D65C680008AA0C0 /* RxSwift */,
 				491E7A1C2D65C69B008AA0C0 /* SnapKit */,
+				4997BDFD2D81374F005EB86E /* Auth */,
+				4997BDFF2D81374F005EB86E /* Functions */,
+				4997BE012D81374F005EB86E /* PostgREST */,
+				4997BE032D81374F005EB86E /* Realtime */,
+				4997BE052D81374F005EB86E /* Storage */,
+				4997BE072D81374F005EB86E /* Supabase */,
+				4997BE0E2D813FE8005EB86E /* JWTKit */,
+				4997BE252D82C041005EB86E /* GoogleSignIn */,
+				4997BE272D82C041005EB86E /* GoogleSignInSwift */,
 			);
 			productName = MatchYou;
 			productReference = 49D45FAD2D53A56B000F74A6 /* MatchYou.app */;
@@ -162,10 +180,11 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				49A3B01A2D548CCE00206AE0 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
-				49A3B06D2D5495AD00206AE0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				49C442952D5B321500DC1DD9 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				491E7A162D65C680008AA0C0 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				491E7A1B2D65C69B008AA0C0 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				4997BDFC2D81374F005EB86E /* XCRemoteSwiftPackageReference "supabase-swift" */,
+				4997BE0D2D813FE8005EB86E /* XCRemoteSwiftPackageReference "jwt-kit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 49D45FAE2D53A56B000F74A6 /* Products */;
@@ -267,6 +286,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kihyeon.MatchYou;
 				PRODUCT_NAME = MatchYou;
+				SUPABASE_ANON_KEY = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRiZ2pyc2VrdmFjdHByZnlzZ3FmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDE3MDIxMzMsImV4cCI6MjA1NzI3ODEzM30.BcNNeugfkvnP9FmuvpCaaHrMWA0_kIOCqI8RM6j33lM;
+				SUPABASE_URL = "https://dbgjrsekvactprfysgqf.supabase.co";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -300,6 +321,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kihyeon.MatchYou;
 				PRODUCT_NAME = MatchYou;
+				SUPABASE_ANON_KEY = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRiZ2pyc2VrdmFjdHByZnlzZ3FmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDE3MDIxMzMsImV4cCI6MjA1NzI3ODEzM30.BcNNeugfkvnP9FmuvpCaaHrMWA0_kIOCqI8RM6j33lM;
+				SUPABASE_URL = "https://dbgjrsekvactprfysgqf.supabase.co";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -465,20 +488,28 @@
 				minimumVersion = 5.7.1;
 			};
 		};
+		4997BDFC2D81374F005EB86E /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/supabase-community/supabase-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.1;
+			};
+		};
+		4997BE0D2D813FE8005EB86E /* XCRemoteSwiftPackageReference "jwt-kit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/vapor/jwt-kit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.2;
+			};
+		};
 		49A3B01A2D548CCE00206AE0 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/google/GoogleSignIn-iOS.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 8.0.0;
-			};
-		};
-		49A3B06D2D5495AD00206AE0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 11.8.1;
 			};
 		};
 		49C442952D5B321500DC1DD9 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
@@ -507,20 +538,48 @@
 			package = 491E7A1B2D65C69B008AA0C0 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
-		49A3B06E2D5495AD00206AE0 /* FirebaseAuth */ = {
+		4997BDFD2D81374F005EB86E /* Auth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 49A3B06D2D5495AD00206AE0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAuth;
+			package = 4997BDFC2D81374F005EB86E /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Auth;
 		};
-		49A3B0702D5495AD00206AE0 /* FirebaseFirestore */ = {
+		4997BDFF2D81374F005EB86E /* Functions */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 49A3B06D2D5495AD00206AE0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFirestore;
+			package = 4997BDFC2D81374F005EB86E /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Functions;
 		};
-		49A3B0722D5495AD00206AE0 /* FirebaseStorage */ = {
+		4997BE012D81374F005EB86E /* PostgREST */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 49A3B06D2D5495AD00206AE0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseStorage;
+			package = 4997BDFC2D81374F005EB86E /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = PostgREST;
+		};
+		4997BE032D81374F005EB86E /* Realtime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4997BDFC2D81374F005EB86E /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Realtime;
+		};
+		4997BE052D81374F005EB86E /* Storage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4997BDFC2D81374F005EB86E /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Storage;
+		};
+		4997BE072D81374F005EB86E /* Supabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4997BDFC2D81374F005EB86E /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Supabase;
+		};
+		4997BE0E2D813FE8005EB86E /* JWTKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4997BE0D2D813FE8005EB86E /* XCRemoteSwiftPackageReference "jwt-kit" */;
+			productName = JWTKit;
+		};
+		4997BE252D82C041005EB86E /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = GoogleSignIn;
+		};
+		4997BE272D82C041005EB86E /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = GoogleSignInSwift;
 		};
 		49C442962D5B321500DC1DD9 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;

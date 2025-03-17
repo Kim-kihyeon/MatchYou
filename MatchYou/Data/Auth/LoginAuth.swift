@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import FirebaseAuth
+import Supabase
 
 public protocol LoginAuthProtocol {
     func signInWithGoogle() async -> Result<User, NetworkError>
@@ -20,7 +20,7 @@ final public class LoginAuth: LoginAuthProtocol {
         self.manager = manager
     }
     
-    public func signInWithGoogle() async -> Result<FirebaseAuth.User, NetworkError> {
+    public func signInWithGoogle() async -> Result<User, NetworkError> {
         await manager.signInWithGoogle()
     }
     

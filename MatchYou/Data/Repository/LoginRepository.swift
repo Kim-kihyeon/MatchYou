@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import FirebaseAuth
+import Supabase
 
 public struct LoginRepository: LoginRepositoryProtocol {
     private let network: LoginAuthProtocol
