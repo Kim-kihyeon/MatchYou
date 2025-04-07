@@ -12,6 +12,10 @@ import RxCocoa
 
 class CreateEstimateViewController: UIViewController {
     
+    //MARK: - ViewModel
+    private let viewModel = CreateEstimateViewModel()
+    private let disposeBag = DisposeBag()
+    
     // MARK: - View
     private let navigationBarView = NavigationBarView()
     private let divider: UIView = {
@@ -30,34 +34,70 @@ class CreateEstimateViewController: UIViewController {
     private let contentStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 16
+        stackView.spacing = 28
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     private lazy var titleTextField: OptionBoxView = {
         let textField = ClearableTextField(
-            editText: editTextRelay,
-            isTextFieldFocused: isTextFieldFocusedRelay,
-            disabled: disabled,
-            placeholder: "제목을 입력하세요."
+            editText: viewModel.titleEditTextRelay,
+            isTextFieldFocused: viewModel.titleIsTextFieldFocusedRelay,
+            disabled: viewModel.titleDisabledRelay,
+            placeholder: "작업명을 입력하세요."
         )
-        let optionBoxView = OptionBoxView(title: "제목", content: textField)
+        let optionBoxView = OptionBoxView(title: "작업명", content: textField)
         return optionBoxView
     }()
+    private lazy var clientNameTextField: OptionBoxView = {
+        let textField = ClearableTextField(
+            editText: viewModel.clientNameEditTextRelay,
+            isTextFieldFocused: viewModel.clientNameIsTextFieldFocusedRelay,
+            disabled: viewModel.clientNameDisabledRelay,
+            placeholder: "고객명을 입력하세요."
+        )
+        let optionBoxView = OptionBoxView(title: "고객명", content: textField)
+        return optionBoxView
+    }()
+    private lazy var descriptionTextView: OptionBoxView = {
+        let textView = UITextView()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.autocapitalizationType = .none
+        textView.font = .systemFont(ofSize: 16)
+        textView.textColor = .black
+        textView.isUserInteractionEnabled = true
+        textView.backgroundColor = .clear
+        
+        let containerView = UIView()
+        containerView.addSubview(textView)
+        
+        textView.snp.makeConstraints { make in
+            make.height.equalTo(120)
+            make.edges.equalToSuperview().inset(8)
+        }
+        
+        let optionBoxView = OptionBoxView(title: "설명", content: containerView)
+        return optionBoxView
+    }()
+    
+    private let photoPickerView: MultiPhotoPickerView = MultiPhotoPickerView()
     
     private let bottomButtonView: BottomButtonView = BottomButtonView()
     
     //MARK: - Properties
-    private var editTextRelay: BehaviorRelay<String> = BehaviorRelay(value: "")
-    private var isTextFieldFocusedRelay: BehaviorRelay<Bool> = BehaviorRelay(value: false)
-    private var disabled: BehaviorRelay<Bool> = BehaviorRelay(value: false)
+    private var titleEditTextRelay: BehaviorRelay<String> = BehaviorRelay(value: "")
+    private var titleIsTextFieldFocusedRelay: BehaviorRelay<Bool> = BehaviorRelay(value: false)
+    private var titleDisabledRelay: BehaviorRelay<Bool> = BehaviorRelay(value: false)
+    
+    private var clientNameEditTextRelay: BehaviorRelay<String> = BehaviorRelay(value: "")
+    private var clientNameIsTextFieldFocusedRelay: BehaviorRelay<Bool> = BehaviorRelay(value: false)
+    private var clientNameDisabledRelay: BehaviorRelay<Bool> = BehaviorRelay(value: false)
     
     //MARK: - Initialize
     init() {
         super.init(nibName: nil, bundle: nil)
         view.backgroundColor = .matchYouBackground
         setUI()
-        setTabAction()
+        bindingViewModel()
     }
     
     required init?(coder: NSCoder) {
@@ -77,6 +117,9 @@ class CreateEstimateViewController: UIViewController {
         
         scrollView.addSubview(contentStackView)
         contentStackView.addArrangedSubview(titleTextField)
+        contentStackView.addArrangedSubview(clientNameTextField)
+        contentStackView.addArrangedSubview(descriptionTextView)
+        contentStackView.addArrangedSubview(photoPickerView)
         
         navigationBarView.setTitle("견적 작성")
         
@@ -105,28 +148,28 @@ class CreateEstimateViewController: UIViewController {
             make.width.equalTo(scrollView.snp.width).offset(-24)
         }
         
-        titleTextField.snp.makeConstraints { make in
-            make.height.equalTo(80)
-        }
-        
         bottomButtonView.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
             make.top.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-60)
         }
+        
+        photoPickerView.snp.makeConstraints { make in
+            make.height.equalTo(100)
+        }
     }
     
-    //MARK: - Action
-    private func setTabAction() {
+    //MARK: - Bindind
+    private func bindingViewModel() {
         navigationBarView.setBackButtonAction { [weak self] in
             self?.dismiss(animated: true)
         }
         
         navigationBarView.setTempSaveButtonAction { [weak self] in
-            
+            self?.viewModel.tempSaveAction.accept(())
         }
         
         bottomButtonView.onTap = { [weak self] in
-            print("bottomButtonView tapped")
+            self?.viewModel.saveAction.accept(())
         }
     }
 }
@@ -294,3 +337,4 @@ final class BottomButtonView: UIView {
         onTap?()
     }
 }
+
