@@ -84,19 +84,14 @@ class CreateEstimateViewController: UIViewController {
     private let bottomButtonView: BottomButtonView = BottomButtonView()
     
     //MARK: - Properties
-    private var titleEditTextRelay: BehaviorRelay<String> = BehaviorRelay(value: "")
-    private var titleIsTextFieldFocusedRelay: BehaviorRelay<Bool> = BehaviorRelay(value: false)
-    private var titleDisabledRelay: BehaviorRelay<Bool> = BehaviorRelay(value: false)
     
-    private var clientNameEditTextRelay: BehaviorRelay<String> = BehaviorRelay(value: "")
-    private var clientNameIsTextFieldFocusedRelay: BehaviorRelay<Bool> = BehaviorRelay(value: false)
-    private var clientNameDisabledRelay: BehaviorRelay<Bool> = BehaviorRelay(value: false)
     
     //MARK: - Initialize
     init() {
         super.init(nibName: nil, bundle: nil)
         view.backgroundColor = .matchYouBackground
         setUI()
+        setAction()
         bindingViewModel()
     }
     
@@ -158,12 +153,15 @@ class CreateEstimateViewController: UIViewController {
         }
     }
     
-    //MARK: - Bindind
-    private func bindingViewModel() {
+    //MARK: - Action
+    private func setAction() {
         navigationBarView.setBackButtonAction { [weak self] in
             self?.dismiss(animated: true)
         }
-        
+    }
+    
+    //MARK: - Bind
+    private func bindingViewModel() {
         navigationBarView.setTempSaveButtonAction { [weak self] in
             self?.viewModel.tempSaveAction.accept(())
         }
