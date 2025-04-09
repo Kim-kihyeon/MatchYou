@@ -35,11 +35,16 @@ final class MultiPhotoPickerView: UIView, PHPickerViewControllerDelegate {
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 8
         layout.itemSize = CGSize(width: 60, height: 60)
+        layout.estimatedItemSize = .zero
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
+
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.register(PhotoContentCell.self, forCellWithReuseIdentifier: PhotoContentCell.identifier)
         collectionView.backgroundColor = .clear
+        collectionView.isScrollEnabled = true
+
         return collectionView
     }()
     
@@ -69,6 +74,7 @@ final class MultiPhotoPickerView: UIView, PHPickerViewControllerDelegate {
         collectionView.snp.makeConstraints { make in
             make.leading.equalTo(photoPickerView.snp.trailing).offset(8)
             make.top.bottom.trailing.equalToSuperview()
+            make.height.equalTo(60)
         }
         
 
@@ -77,7 +83,14 @@ final class MultiPhotoPickerView: UIView, PHPickerViewControllerDelegate {
     //MARK: - Action
     private func setPhotoPickerAction() {
         photoPickerView.selectImageButton.rx.tap
-            .bind { [weak self] in self?.presentPhotoPicker() }
+            .withLatestFrom(selectedImageCount)
+            .bind { [weak self] count in
+                guard count < 10 else {
+                    print("사진 첨부 개수는 10개까지 가능합니다.")
+                    return
+                }
+                self?.presentPhotoPicker()
+            }
             .disposed(by: disposeBag)
     }
     
@@ -139,32 +152,35 @@ final class MultiPhotoPickerView: UIView, PHPickerViewControllerDelegate {
     }
     
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-        picker.dismiss(animated: true)
         
-        var currentImages = (try? selectedImagesSubject.value()) ?? []
-        var newImages: [UIImage] = []
-        let dispatchGroup = DispatchGroup()
-        
-        for result in results {
-            let itemProvider = result.itemProvider
-            if itemProvider.canLoadObject(ofClass: UIImage.self) {
-                dispatchGroup.enter()
-                itemProvider.loadObject(ofClass: UIImage.self) { image, _ in
-                    if let image = image as? UIImage {
-                        DispatchQueue.main.async {
-                            newImages.append(image)
+            var currentImages = (try? selectedImagesSubject.value()) ?? []
+            var newImages: [UIImage] = []
+            let dispatchGroup = DispatchGroup()
+            
+            for result in results {
+                let itemProvider = result.itemProvider
+                if itemProvider.canLoadObject(ofClass: UIImage.self) {
+                    dispatchGroup.enter()
+                    itemProvider.loadObject(ofClass: UIImage.self) { image, _ in
+                        if let image = image as? UIImage {
+                            DispatchQueue.main.async {
+                                newImages.append(image)
+                                dispatchGroup.leave()
+                            }
+                        } else {
+                            dispatchGroup.leave()
                         }
                     }
-                    dispatchGroup.leave()
                 }
             }
-        }
-        
-        dispatchGroup.notify(queue: .main) {
-            currentImages.append(contentsOf: newImages)
-            self.selectedImagesSubject.onNext(currentImages)
-            self.collectionView.reloadData()
-        }
+            
+            dispatchGroup.notify(queue: .main) {
+                currentImages.append(contentsOf: newImages)
+                let limitedImages = Array(currentImages.prefix(10))
+                self.selectedImagesSubject.onNext(limitedImages)
+                self.collectionView.reloadData()
+                picker.dismiss(animated: true)
+            }
     }
 }
 
