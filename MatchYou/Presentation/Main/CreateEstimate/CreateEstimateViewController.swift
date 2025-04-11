@@ -143,6 +143,18 @@ class CreateEstimateViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
     //MARK: - UI
     private func setUI() {
         view.addSubview(navigationBarView)
@@ -215,8 +227,29 @@ class CreateEstimateViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    //MARK: - Objc func
     @objc private func dismissKeyboard() {
         view.endEditing(true)
+    }
+    
+    @objc private func keyboardWillShow(notification: Notification) {
+        guard let userInfo = notification.userInfo,
+              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
+        
+        let bottomInset = keyboardFrame.height - view.safeAreaInsets.bottom
+        scrollView.contentInset.bottom = bottomInset
+        
+        var inset = scrollView.verticalScrollIndicatorInsets
+        inset.bottom = bottomInset
+        scrollView.verticalScrollIndicatorInsets = inset
+    }
+    
+    @objc private func keyboardWillHide(notification: Notification) {
+        scrollView.contentInset.bottom = 0
+        
+        var inset = scrollView.verticalScrollIndicatorInsets
+        inset.bottom = 0
+        scrollView.verticalScrollIndicatorInsets = inset
     }
 }
 
