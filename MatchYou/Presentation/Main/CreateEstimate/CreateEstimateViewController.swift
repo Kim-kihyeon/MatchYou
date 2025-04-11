@@ -199,6 +199,9 @@ class CreateEstimateViewController: UIViewController, UITextFieldDelegate {
         navigationBarView.setBackButtonAction { [weak self] in
             self?.dismiss(animated: true)
         }
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        scrollView.addGestureRecognizer(tapGesture)
     }
     
     //MARK: - Bind
@@ -210,6 +213,10 @@ class CreateEstimateViewController: UIViewController, UITextFieldDelegate {
         bottomButtonView.onTap = { [weak self] in
             self?.viewModel.saveAction.accept(())
         }
+    }
+    
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
 
