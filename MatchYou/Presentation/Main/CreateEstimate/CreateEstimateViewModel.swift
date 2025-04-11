@@ -25,6 +25,10 @@ public final class CreateEstimateViewModel: CreateEstimateViewModelProtocol {
     
     let descriptionTextRelay = BehaviorRelay<String>(value: "")
     
+    let estimatedPriceEditTextRelay = BehaviorRelay<String>(value: "")
+    let estimatedPriceIsTextFieldFocusedRelay = BehaviorRelay<Bool>(value: false)
+    let estimatedPriceDisabledRelay = BehaviorRelay<Bool>(value: false)
+    
     let tempSaveAction = PublishRelay<Void>()
     let saveAction = PublishRelay<Void>()
     

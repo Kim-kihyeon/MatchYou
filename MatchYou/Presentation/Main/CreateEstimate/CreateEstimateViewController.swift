@@ -10,7 +10,7 @@ import SnapKit
 import RxSwift
 import RxCocoa
 
-class CreateEstimateViewController: UIViewController {
+class CreateEstimateViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: - ViewModel
     private let viewModel = CreateEstimateViewModel()
@@ -81,8 +81,48 @@ class CreateEstimateViewController: UIViewController {
     
     private let photoPickerView: MultiPhotoPickerView = MultiPhotoPickerView()
     
-    private let bottomButtonView: BottomButtonView = BottomButtonView()
+    private lazy var estimatedPriceTextField: OptionBoxView = {
+        let textField = ClearableTextField(
+            editText: viewModel.estimatedPriceEditTextRelay,
+            isTextFieldFocused: viewModel.estimatedPriceIsTextFieldFocusedRelay,
+            disabled: viewModel.estimatedPriceDisabledRelay,
+            placeholder: "견적 금액을 입력해주세요.",
+            onlyAllowNumber: true
+        )
+        textField.textField.keyboardType = .numberPad
+        
+        let optionBoxView = OptionBoxView(title: "견적 금액", content: textField)
+        return optionBoxView
+    }()
     
+    private let startDateField: OptionBoxView = {
+        let datePickerTextField = DatePickerTextField()
+        
+        let optionBoxView = OptionBoxView(title: "시작 날짜", content: datePickerTextField)
+        return optionBoxView
+    }()
+    
+    private let endDateField: OptionBoxView = {
+        let datePickerTextField = DatePickerTextField()
+        
+        let optionBoxView = OptionBoxView(title: "종료 날짜", content: datePickerTextField)
+        return optionBoxView
+    }()
+    
+    private lazy var dateField: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.spacing = 20
+        
+        stackView.addArrangedSubview(startDateField)
+        stackView.addArrangedSubview(endDateField)
+        
+        return stackView
+    }()
+    
+    private let bottomButtonView: BottomButtonView = BottomButtonView()
+        
     //MARK: - Properties
     
     
@@ -115,6 +155,8 @@ class CreateEstimateViewController: UIViewController {
         contentStackView.addArrangedSubview(clientNameTextField)
         contentStackView.addArrangedSubview(descriptionTextView)
         contentStackView.addArrangedSubview(photoPickerView)
+        contentStackView.addArrangedSubview(estimatedPriceTextField)
+        contentStackView.addArrangedSubview(dateField)
         
         navigationBarView.setTitle("견적 작성")
         
@@ -134,12 +176,11 @@ class CreateEstimateViewController: UIViewController {
         scrollView.snp.makeConstraints { make in
             make.top.equalTo(divider.snp.bottom)
             make.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(bottomButtonView)
+            make.bottom.equalTo(bottomButtonView.snp.top)
         }
         
         contentStackView.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(12)
-            make.leading.trailing.equalToSuperview().inset(12)
+            make.edges.equalToSuperview().inset(12)
             make.width.equalTo(scrollView.snp.width).offset(-24)
         }
         
@@ -149,7 +190,7 @@ class CreateEstimateViewController: UIViewController {
         }
         
         photoPickerView.snp.makeConstraints { make in
-            make.height.equalTo(100)
+            make.height.equalTo(68)
         }
     }
     
